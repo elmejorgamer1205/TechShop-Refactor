@@ -14,6 +14,11 @@ public class GestorPedidos {
      * le aplica el impuesto correspondiente (IVA) y suma todos los importes para obtener el coste final del pedido.
      * DEBERÍA HACERSE: Renombrar el método para que refleje esta operación de cálculo total con impuestos.
      */
+
+    private static final double IVA_ESTANDAR = 0.21;
+    private static final double IVA_REDUCIDO = 0.10;
+    private static final double UMBRAL_PESO_GRATIS = 10.0;
+
     public void calcular(Producto[] productos) {
 
         // ERROR 2: Variables poco descriptivas - La variable 'precioTotal' es críptica.
