@@ -15,9 +15,13 @@ public class GestorPedidos {
      * DEBERÍA HACERSE: Renombrar el método para que refleje esta operación de cálculo total con impuestos.
      */
 
-    private static final double IVA_ESTANDAR = 0.21;
-    private static final double IVA_REDUCIDO = 0.10;
-    private static final double UMBRAL_PESO_GRATIS = 10.0;
+    private static final int TIPO_COMPONENTE = 1;
+    private static final int TIPO_PERIFERICO = 2;
+    private static final int TIPO_SERVICIO = 3;
+
+    private static final double IVA_COMPONENTE = 1.21;
+    private static final double IVA_PERIFERICO = 1.10;
+    private static final double UMBRAL_PEDIDO_GRANDE = 1000.0;
 
     public void calcular(Producto[] productos) {
 

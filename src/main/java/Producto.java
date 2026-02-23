@@ -5,10 +5,10 @@ public class Producto {
     private double precio;
     private int tipo; // 1 = Componente, 2 = Periférico, 3 = Servicio
 
-    public Producto(String n, double p, int t) {
-        this.nombre = n;
-        this.precio = p;
-        this.tipo = t;
+    public Producto(String nombre, double precio, int tipo) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.tipo = tipo;
     }
 
     public String getNombre() {
