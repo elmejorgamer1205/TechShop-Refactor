@@ -23,36 +23,33 @@ public class GestorPedidos {
     private static final double IVA_PERIFERICO = 1.10;
     private static final double UMBRAL_PEDIDO_GRANDE = 1000.0;
 
-    public void calcular(Producto[] productos) {
 
-        // ERROR 2: Variables poco descriptivas - La variable 'precioTotal' es críptica.
-        // FUNCIONALIDAD: Esta variable actúa como un acumulador. Empieza en 0 y guarda la suma progresiva
-        // del precio de cada producto más su IVA. Al final del método, representa el dinero total a pagar.
-        // DEBERÍA HACERSE: Darle un nombre que indique que almacena el importe total acumulado.
-        double precioTotal = 0;
+    public double calcularPrecioTotal(Producto[] productos) {
+        double acumuladorPrecioTotal = 0; // Nombre de variable más descriptivo
 
-        // ERROR 3: Robustez (NullPointerException)
-        // El bucle accede directamente a las propiedades de cada elemento sin verificar si existen.
-        // Si el array contiene posiciones vacías (huecos), el programa fallará al intentar leer datos de un nulo.
-        // DEBERÍA HACERSE: Implementar una comprobación defensiva para asegurarse de que el objeto no es nulo antes de usarlo.
-        for (int i = 0; i < productos.length; i++) {
+        if (productos == null) {
+            return 0;
+        }
 
-            // ERROR 4: Números Mágicos (Magic Numbers)
-            // El código utiliza números literales ('1', '2', '3') para identificar tipos y ('1.21', '1.10') para impuestos.
-            // Esto hace que el código sea difícil de leer y muy costoso de mantener si los valores cambian.
-            // DEBERÍA HACERSE: Sustituir estos números por Constantes con nombres que expliquen el significado de negocio de cada valor.
+        for (Producto p : productos) {
+            // Solución al ERROR 3: Control de nulos
+            if (p == null) {
+                continue;
+            }
 
-            if (productos[i].getTipo() == 1) {
-                // Componentes tienen 21% de IVA
-                precioTotal += productos[i].getPrecio() * 1.21;
-            } else if (productos[i].getTipo() == 2) {
-                // Periféricos tienen 10% de IVA (Lógica antigua)
-                precioTotal += productos[i].getPrecio() * 1.10;
-            } else if (productos[i].getTipo() == 3) {
-                // Servicios exentos de IVA
-                precioTotal += productos[i].getPrecio();
+            // Solución al ERROR 4: Uso de constantes en lugar de números mágicos
+            if (p.getTipo() == TIPO_COMPONENTE) {
+                acumuladorPrecioTotal += p.getPrecio() * IVA_COMPONENTE;
+            } else if (p.getTipo() == TIPO_PERIFERICO) {
+                acumuladorPrecioTotal += p.getPrecio() * IVA_PERIFERICO;
+            } else if (p.getTipo() == TIPO_SERVICIO) {
+                acumuladorPrecioTotal += p.getPrecio();
             }
         }
+
+        // Solución al ERROR 5: Devolver el valor
+        return acumuladorPrecioTotal;
+    }
 
         // ERROR 5: Responsabilidad Única / Salida por Consola
         // Este método mezcla la lógica de cálculo con la presentación de datos por consola.
