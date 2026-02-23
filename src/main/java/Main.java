@@ -9,6 +9,6 @@ public class Main {
         // lista[2] es NULL
 
         System.out.println("Iniciando procesamiento...");
-        g.calcular(lista); // Esto lanzará NullPointerException
+        g.calcularPrecioTotal(lista); // Esto lanzará NullPointerException
     }
 }
