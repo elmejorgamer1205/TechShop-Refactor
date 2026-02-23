@@ -1,37 +1,37 @@
 // CÓDIGO LEGACY CON ERRORES INTENCIONADOS
 public class Producto {
 
-    private String n;
-    private double p;
-    private int t; // 1 = Componente, 2 = Periférico, 3 = Servicio
+    private String nombre;
+    private double precio;
+    private int tipo; // 1 = Componente, 2 = Periférico, 3 = Servicio
 
     public Producto(String n, double p, int t) {
-        this.n = n;
-        this.p = p;
-        this.t = t;
+        this.nombre = n;
+        this.precio = p;
+        this.tipo = t;
     }
 
-    public String getN() {
-        return n;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setN(String n) {
-        this.n = n;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public double getP() {
-        return p;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setP(double p) {
-        this.p = p;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
-    public int getT() {
-        return t;
+    public int getTipo() {
+        return tipo;
     }
 
-    public void setT(int t) {
-        this.t = t;
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
     }
 }
