@@ -16,11 +16,11 @@ public class GestorPedidos {
      */
     public void calcular(Producto[] productos) {
 
-        // ERROR 2: Variables poco descriptivas - La variable 't' es críptica.
+        // ERROR 2: Variables poco descriptivas - La variable 'precioTotal' es críptica.
         // FUNCIONALIDAD: Esta variable actúa como un acumulador. Empieza en 0 y guarda la suma progresiva
         // del precio de cada producto más su IVA. Al final del método, representa el dinero total a pagar.
         // DEBERÍA HACERSE: Darle un nombre que indique que almacena el importe total acumulado.
-        double t = 0;
+        double precioTotal = 0;
 
         // ERROR 3: Robustez (NullPointerException)
         // El bucle accede directamente a las propiedades de cada elemento sin verificar si existen.
@@ -33,15 +33,15 @@ public class GestorPedidos {
             // Esto hace que el código sea difícil de leer y muy costoso de mantener si los valores cambian.
             // DEBERÍA HACERSE: Sustituir estos números por Constantes con nombres que expliquen el significado de negocio de cada valor.
 
-            if (productos[i].t == 1) {
+            if (productos[i].getTipo() == 1) {
                 // Componentes tienen 21% de IVA
-                t += productos[i].p * 1.21;
-            } else if (productos[i].t == 2) {
+                precioTotal += productos[i].getPrecio() * 1.21;
+            } else if (productos[i].getTipo() == 2) {
                 // Periféricos tienen 10% de IVA (Lógica antigua)
-                t += productos[i].p * 1.10;
-            } else if (productos[i].t == 3) {
+                precioTotal += productos[i].getPrecio() * 1.10;
+            } else if (productos[i].getTipo() == 3) {
                 // Servicios exentos de IVA
-                t += productos[i].p;
+                precioTotal += productos[i].getPrecio();
             }
         }
 
@@ -49,10 +49,10 @@ public class GestorPedidos {
         // Este método mezcla la lógica de cálculo con la presentación de datos por consola.
         // Esto limita la reutilización del código, ya que no permite obtener el resultado para usarlo en otra parte.
         // DEBERÍA HACERSE: Modificar el método para que devuelva el dato calculado en lugar de imprimirlo.
-        if (t > 1000) {
-            System.out.println("Pedido Grande: " + t);
+        if (precioTotal > 1000) {
+            System.out.println("Pedido Grande: " + precioTotal);
         } else {
-            System.out.println("Pedido Normal: " + t);
+            System.out.println("Pedido Normal: " + precioTotal);
         }
 
         try {
