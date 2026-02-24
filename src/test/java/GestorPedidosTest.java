@@ -12,6 +12,6 @@ class GestorPedidosTest {
         gestorPedidos = new GestorPedidos();
     }
 
-    @Test
+
 
 }
